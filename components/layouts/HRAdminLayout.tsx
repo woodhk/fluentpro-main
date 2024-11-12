@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import {
@@ -30,7 +31,12 @@ interface HRAdminLayoutProps {
   activeTab?: string
 }
 
-const SidebarStats = () => {
+interface SidebarContent {
+  component: React.ComponentType<any>;
+  props: any;
+}
+
+const DefaultSidebarStats = () => {
   const [selectedPerformer, setSelectedPerformer] = useState<number | null>(null)
   
   const topPerformers = [
@@ -102,6 +108,21 @@ const SidebarStats = () => {
 
   return (
     <div className="space-y-8">
+      {/* Profile Card */}
+      <Card className="p-6 bg-white shadow-sm border border-gray-100">
+        <div className="flex flex-col items-center text-center">
+          <div className="relative group">
+            <div className="w-28 h-28 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full flex items-center justify-center transform group-hover:scale-105 transition-all duration-300">
+              <UserCircle className="w-20 h-20 text-blue-600" />
+            </div>
+            <div className="absolute -bottom-2 right-0 bg-green-500 w-6 h-6 rounded-full border-4 border-white"></div>
+          </div>
+          <h3 className="font-semibold text-xl mt-6 mb-1">Admin Name</h3>
+          <p className="text-gray-500 mb-2">HR Administrator</p>
+          <p className="text-sm text-gray-400">Company Name</p>
+        </div>
+      </Card>
+
       {/* Top Performers Section */}
       <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
         <div className="flex items-center justify-between mb-6">
@@ -238,39 +259,53 @@ const HRAdminLayout = ({ children, activeTab = 'dashboard' }: HRAdminLayoutProps
   const router = useRouter()
   const [currentTab, setCurrentTab] = useState(activeTab)
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+  const [sidebarContent, setSidebarContent] = useState<SidebarContent | null>(null)
 
   const navigationItems = [
     {
       id: 'dashboard',
       label: 'Dashboard',
       icon: LayoutDashboard,
-      path: '/admin/dashboard'
+      path: '/dashboard'
     },
     {
       id: 'invite-users',
       label: 'Invite Users',
       icon: Users,
-      path: '/admin/invite-users'
+      path: '/invite-users'
     },
     {
       id: 'account-manage',
-      label: 'Account Manage',
+      label: 'Manage Account',
       icon: FileSpreadsheet,
-      path: '/admin/account-manage'
+      path: '/account-manage'
     },
     {
       id: 'reports',
       label: 'Reports + Analytics',
       icon: BarChart3,
-      path: '/admin/reports'
+      path: '/reports-analytics/individual'
     },
     {
       id: 'settings',
       label: 'Settings',
       icon: Settings,
-      path: '/admin/settings'
+      path: '/settings/my-details'
     }
   ]
+
+  useEffect(() => {
+    const handleSidebarUpdate = (event: CustomEvent) => {
+      const { component, props } = event.detail;
+      setSidebarContent({ component, props });
+    };
+
+    window.addEventListener('updateSidebar', handleSidebarUpdate as EventListener);
+    
+    return () => {
+      window.removeEventListener('updateSidebar', handleSidebarUpdate as EventListener);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -291,10 +326,12 @@ const HRAdminLayout = ({ children, activeTab = 'dashboard' }: HRAdminLayoutProps
                   <MenuIcon className="h-5 w-5 text-blue-600" />
                 )}
               </Button>
-              <img 
+              <Image 
                 src="/icons/logo.svg" 
                 alt="FluentPro Logo" 
-                className="h-8 transform hover:scale-105 transition-transform duration-200" 
+                width={120}
+                height={30}
+                className="h-8 w-auto transform hover:scale-105 transition-transform duration-200" 
               />
             </div>
           </div>
@@ -362,22 +399,11 @@ const HRAdminLayout = ({ children, activeTab = 'dashboard' }: HRAdminLayoutProps
 
         {/* Right Sidebar */}
         <aside className="w-96 bg-gray-50 p-6 space-y-6">
-          {/* Profile Card */}
-          <Card className="p-6 bg-white shadow-sm border border-gray-100">
-            <div className="flex flex-col items-center text-center">
-              <div className="relative group">
-                <div className="w-28 h-28 bg-gradient-to-br from-blue-100 to-blue-50 rounded-full flex items-center justify-center transform group-hover:scale-105 transition-all duration-300">
-                  <UserCircle className="w-20 h-20 text-blue-600" />
-                </div>
-                <div className="absolute -bottom-2 right-0 bg-green-500 w-6 h-6 rounded-full border-4 border-white"></div>
-              </div>
-              <h3 className="font-semibold text-xl mt-6 mb-1">Admin Name</h3>
-              <p className="text-gray-500 mb-2">HR Administrator</p>
-              <p className="text-sm text-gray-400">Company Name</p>
-            </div>
-          </Card>
-
-          <SidebarStats />
+          {sidebarContent?.component ? (
+          React.createElement(sidebarContent.component, sidebarContent.props)
+            ) : (
+          <DefaultSidebarStats />
+          )}
         </aside>
       </div>
     </div>
