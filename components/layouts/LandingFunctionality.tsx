@@ -11,14 +11,14 @@ const sections = [
     isReversed: false,
   },
   {
-    title: "Real-World Scenarios, Specific For Staffs' Role",
+    title: "Real-World Scenarios",
     description: "Employees engage in realistic conversations and scenarios powered by advanced AI technology. Staff will practice their language skills in authentic situations that adapt to their level, providing immediate feedback and helping them build genuine communication confidence.",
     image: "/icons/real-world-simulation.png",
     isReversed: true,
   },
   {
     title: "Measure Progress",
-    description: "Take control of staffs' learning journey with our intuitive information management system. Track their progress, manage your schedule, and access learning materials - all in one centralized, easy-to-navigate platform.",
+    description: "Take control of staffs' learning journey with our intuitive information management system. Measure the progress of employees, departments, or the whole company using FluentPro's Admin dashboards.",
     image: "/icons/user-info.png",
     isReversed: false,
   },

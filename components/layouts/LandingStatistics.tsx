@@ -110,7 +110,7 @@ const LandingStatistics: React.FC = () => {
             A Personal AI English-Speaking Coach For Every Employee
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            FluentPro helps your employees build confidence and improve speaking skills through practicing real-world scenarios for their work, without the pressure. No classes needed...
+            FluentPro helps your employees build confidence and improve speaking skills through practicing real-world scenarios for their work, without the pressure. No physical classes needed...
           </p>
         </div>
 

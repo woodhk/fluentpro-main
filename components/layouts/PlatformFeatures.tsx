@@ -39,7 +39,7 @@ const PlatformFeatures = () => {
     {
       icon: <BookOpen className="h-7 w-7" />,
       title: "Real-World Simulations",
-      description: "Master business communication through authentic workplace scenarios",
+      description: "Staff will practice their business communication skills through real world scenarios they experience in the workplace everyday",
       color: "from-rose-400 to-pink-600",
       lightColor: "from-rose-50 to-pink-50",
       gradient: "group-hover:from-rose-500/20 group-hover:to-pink-500/20"
@@ -47,7 +47,7 @@ const PlatformFeatures = () => {
     {
       icon: <Clock className="h-7 w-7" />,
       title: "Instant Feedback",
-      description: "Receive real-time AI-powered suggestions to refine your communication",
+      description: "Receive real-time AI-powered suggestions to refine employees Business English communication skills",
       color: "from-blue-400 to-cyan-600",
       lightColor: "from-blue-50 to-cyan-50",
       gradient: "group-hover:from-blue-500/20 group-hover:to-cyan-500/20"
@@ -55,7 +55,7 @@ const PlatformFeatures = () => {
     {
       icon: <LineChart className="h-7 w-7" />,
       title: "Personalized Learning Path",
-      description: "Follow a custom curriculum tailored to your industry and proficiency",
+      description: "Staff will have custom curriculums tailored to their industry and proficiency",
       color: "from-violet-400 to-purple-600",
       lightColor: "from-violet-50 to-purple-50",
       gradient: "group-hover:from-violet-500/20 group-hover:to-purple-500/20"
@@ -63,7 +63,7 @@ const PlatformFeatures = () => {
     {
       icon: <Award className="h-7 w-7" />,
       title: "Certificate of Completion",
-      description: "Validate your business English proficiency with an official certification",
+      description: "To validate employees business English proficiency, they'll receive an official certificate of completion",
       color: "from-emerald-400 to-teal-600",
       lightColor: "from-emerald-50 to-teal-50",
       gradient: "group-hover:from-emerald-500/20 group-hover:to-teal-500/20"

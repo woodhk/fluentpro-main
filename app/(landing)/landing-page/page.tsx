@@ -13,6 +13,7 @@ import LandingCta from '@/components/layouts/LandingCta';
 import Footer from '@/components/layouts/Footer';
 import LandingStatistics from '@/components/layouts/LandingStatistics';
 import HeroStats from '@/components/layouts/HeroStats';
+import Navigation from '@/components/layouts/Navigation';
 
 
 // Testimonials Data
@@ -120,62 +121,13 @@ const LandingPage = () => {
 
   return (
     <main className="bg-white">
+      <Navigation 
+        isScrolled={isScrolled}
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+      />
       {/* Hero Section */}
       <div className="min-h-screen bg-gradient-to-br from-violet-50 via-white to-violet-50 overflow-hidden">
-        {/* Navigation Bar */}
-        <motion.nav
-          initial={{ y: -100 }}
-          animate={{ y: 0 }}
-          transition={{ type: "spring", stiffness: 100 }}
-          className={`fixed w-full z-50 transition-all duration-300 ${
-            isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent'
-          }`}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              {/* Logo */}
-              <motion.div 
-                className="flex items-center"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Image
-                  src="/icons/logo.svg"
-                  alt="FluentPro Logo"
-                  width={120}
-                  height={30}
-                  className="h-8 w-auto"
-                />
-              </motion.div>
-
-              {/* Desktop Navigation */}
-              <div className="hidden md:flex items-center space-x-8">
-                {['Home', 'About Us', 'Contact'].map((item) => (
-                  <motion.a
-                    key={item}
-                    href="#"
-                    className="text-gray-600 hover:text-violet-600 transition-colors"
-                  >
-                    {item}
-                  </motion.a>
-                ))}
-                <Button 
-                  className="bg-violet-600 hover:bg-violet-700 text-white px-6 rounded-full"
-                  variant="default"
-                >
-                  Join the Waitlist
-                </Button>
-              </div>
-
-              <motion.button 
-                className="md:hidden p-2"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              >
-                {isMobileMenuOpen ? <X /> : <Menu />}
-              </motion.button>
-            </div>
-          </div>
-        </motion.nav>
 
         {/* Hero Content */}
         <div className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
@@ -209,7 +161,7 @@ const LandingPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-lg text-gray-600 max-w-2xl mx-auto"
               >
-                The LanguageKey has been a trusted partner for Business English training in banks, hotels, F&B companies, and other top industries for over 30 years. With AI, we’ve transformed this expertise into a scalable, personalized solution: FluentPro.
+                The LanguageKey has been a trusted partner for Business English training in banks, hotels, F&B companies, and other top industries for over 30 years. With AI, we’ve transformed this expertise into a scalable, personalized training solution: FluentPro.
               </motion.p>
 
               {/* Feature List */}
