@@ -130,7 +130,7 @@ const LandingCta: React.FC<LandingCtaProps> = ({
           {/* Headings */}
           <motion.div className="space-y-6 mb-12" variants={itemVariants}>
             <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-blue-600 leading-tight pb-2">
-              Learn Business English
+              Assess and train at scale
             </h1>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 pt-1">
               with FluentPro

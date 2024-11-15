@@ -190,7 +190,7 @@ const LandingTestimonial = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="text-sm font-medium text-violet-600 mb-2">TESTIMONIALS</div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-5xl sm:text-5xl font-bold text-gray-900 mb-4">
             What our clients say
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">

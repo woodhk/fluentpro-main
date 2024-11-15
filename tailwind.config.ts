@@ -72,15 +72,14 @@ const config = {
       backgroundImage: {
         "bank-gradient": "linear-gradient(90deg, #0179FE 0%, #4893FF 100%)",
         "gradient-mesh": "url('/icons/gradient-mesh.svg')",
-        "bank-green-gradient":
-          "linear-gradient(90deg, #01797A 0%, #489399 100%)",
+        "bank-green-gradient": "linear-gradient(90deg, #01797A 0%, #489399 100%)",
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       boxShadow: {
         form: "0px 1px 2px 0px rgba(16, 24, 40, 0.05)",
-        chart:
-          "0px 1px 3px 0px rgba(16, 24, 40, 0.10), 0px 1px 2px 0px rgba(16, 24, 40, 0.06)",
-        profile:
-          "0px 12px 16px -4px rgba(16, 24, 40, 0.08), 0px 4px 6px -2px rgba(16, 24, 40, 0.03)",
+        chart: "0px 1px 3px 0px rgba(16, 24, 40, 0.10), 0px 1px 2px 0px rgba(16, 24, 40, 0.06)",
+        profile: "0px 12px 16px -4px rgba(16, 24, 40, 0.08), 0px 4px 6px -2px rgba(16, 24, 40, 0.03)",
         creditCard: "8px 10px 16px 0px rgba(0, 0, 0, 0.05)",
       },
       fontFamily: {
@@ -96,10 +95,78 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        float: {
+          "0%, 100%": { 
+            transform: "translateY(0px) translateX(0px)",
+          },
+          "50%": { 
+            transform: "translateY(-20px) translateX(10px)",
+          },
+        },
+        spotlight: {
+          "0%": {
+            opacity: "0",
+            transform: "translate(-72%, -62%) scale(0.5)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translate(-50%,-40%) scale(1)",
+          },
+        },
+        gradient: {
+          "0%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+          "100%": { backgroundPosition: "0% 50%" },
+        },
+        "image-rotate": {
+          "0%": { transform: "rotateX(25deg)" },
+          "25%": { transform: "rotateX(25deg) scale(0.9)" },
+          "60%": { transform: "none" },
+          "100%": { transform: "none" },
+        },
+        "image-glow": {
+          "0%": {
+            opacity: "0",
+            "animation-timing-function": "cubic-bezier(0.74,0.25,0.76,1)",
+          },
+          "10%": {
+            opacity: "1",
+            "animation-timing-function": "cubic-bezier(0.12,0.01,0.08,0.99)",
+          },
+          "100%": {
+            opacity: "0.2",
+          },
+        },
+        "sketch-lines": {
+          "0%": { "stroke-dashoffset": "1" },
+          "50%": { "stroke-dashoffset": "0" },
+          "99%": { "stroke-dashoffset": "0" },
+          "100%": { visiblity: "hidden" },
+        },
+        "glow-line-horizontal": {
+          "0%": { opacity: "0", transform: "translateX(0)" },
+          "5%": { opacity: "1", transform: "translateX(0)" },
+          "90%": { opacity: "1" },
+          "100%": { opacity: "0", transform: "translateX(min(60vw, 45rem))" },
+        },
+        "glow-line-vertical": {
+          "0%": { opacity: "0", transform: "translateY(0)" },
+          "5%": { opacity: "1", transform: "translateY(0)" },
+          "90%": { opacity: "1" },
+          "100%": { opacity: "0", transform: "translateY(min(21vw, 45rem))" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "float": "float 6s ease-in-out infinite",
+        "spotlight": "spotlight 2s ease .75s 1 forwards",
+        "gradient": "gradient 6s linear infinite",
+        "image-rotate": "image-rotate 1.4s ease forwards",
+        "image-glow": "image-glow 4.8s ease-out forwards",
+        "sketch-lines": "sketch-lines 1.2s ease forwards",
+        "glow-line-horizontal": "glow-line-horizontal 3s ease-in forwards",
+        "glow-line-vertical": "glow-line-vertical 3s ease-in forwards",
       },
     },
   },

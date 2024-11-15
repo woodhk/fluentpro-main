@@ -121,19 +121,18 @@ const PlatformFeatures = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-bold tracking-tight mb-6">
-            What is{" "}
+          <h2 className="text-5xl font-bold tracking-tight mb-6">
+          Replacing Traditional English Training With{" "}
             <span className="relative">
               <span className="relative z-10 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Fluent Pro
+                FluentPro
               </span>
               <span className="absolute -bottom-2 left-0 right-0 h-3 bg-gradient-to-r from-blue-200/50 to-purple-200/50 -z-10 transform -skew-x-12" />
             </span>
-            ?
           </h2>
           
           <p className="text-lg text-gray-600 leading-relaxed">
-            Your AI-powered companion for mastering Business English. Perfect for professionals aiming to enhance their workplace communication skills through practical, personalized learning experiences.
+            Save thousands on tutoring costs with FluentPro. Our AI, built on 30+ years of Business English training experience, provides your employees with personalized learning paths, feedback, and real-world scenario simulations—all without the need for physical classes.
           </p>
         </motion.div>
 

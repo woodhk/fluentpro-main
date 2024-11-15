@@ -11,6 +11,8 @@ import LearningProcessSection from '@/components/layouts/LandingFunctionality';
 import LandingTestimonial from '@/components/layouts/LandingTestimonial';
 import LandingCta from '@/components/layouts/LandingCta';
 import Footer from '@/components/layouts/Footer';
+import LandingStatistics from '@/components/layouts/LandingStatistics';
+import HeroStats from '@/components/layouts/HeroStats';
 
 
 // Testimonials Data
@@ -198,8 +200,8 @@ const LandingPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-4xl sm:text-6xl font-bold text-gray-900"
               >
-                Speak Business English{' '}
-                <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">Confidently</span>
+                Improve Your Employees'{' '}
+                <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">English Speaking Skills</span>
               </motion.h1>
 
               <motion.p
@@ -207,7 +209,7 @@ const LandingPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-lg text-gray-600 max-w-2xl mx-auto"
               >
-                Practice real scenarios powered by AI and develop skills designed for your specific work role. Master professional communication with personalized feedback.
+                The LanguageKey has been a trusted partner for Business English training in banks, hotels, F&B companies, and other top industries for over 30 years. With AI, we’ve transformed this expertise into a scalable, personalized solution: FluentPro.
               </motion.p>
 
               {/* Feature List */}
@@ -270,28 +272,7 @@ const LandingPage = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-violet-500/10 to-transparent" />
                 </motion.div>
-
-                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white rounded-2xl shadow-lg p-4 flex gap-4 items-center">
-                  <div className="flex -space-x-2">
-                    {[1, 2, 3].map((i) => (
-                      <div
-                        key={i}
-                        className="w-10 h-10 rounded-full border-2 border-white bg-gray-200"
-                      />
-                    ))}
-                  </div>
-                  <div className="pr-4 border-r border-gray-200">
-                    <div className="text-xl font-bold">2,291</div>
-                    <div className="text-gray-500 text-sm">Happy Users</div>
-                  </div>
-                  <div>
-                    <div className="flex items-center text-xl font-bold">
-                      4.8/5
-                      <span className="ml-1 text-yellow-400">★★★★★</span>
-                    </div>
-                    <div className="text-gray-500 text-sm">Rating</div>
-                  </div>
-                </div>
+                <HeroStats />
               </motion.div>
             </div>
           </div>
@@ -303,7 +284,7 @@ const LandingPage = () => {
         {/* Section Header */}
         <div className="text-center mb-12">
           <p className="text-lg text-gray-600 mb-2">Clients we've helped...</p>
-          <h2 className="text-4xl font-semibold text-gray-900">Respected and Trusted in Asia for 30+ Years</h2>
+          <h2 className="text-5xl font-semibold text-gray-900">Respected and Trusted in Asia for 30+ Years</h2>
         </div>
 
         {/* Logos Container */}
@@ -410,6 +391,7 @@ const LandingPage = () => {
         </div>
       </section>
       <PlatformFeatures />
+      <LandingStatistics />
       <LearningProcessSection />
       <LandingTestimonial />
       <LandingCta />

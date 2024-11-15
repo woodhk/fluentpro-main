@@ -6,25 +6,25 @@ import { motion } from 'framer-motion';
 const sections = [
   {
     title: "Personalized Learning Path",
-    description: "Experience a tailored educational journey designed just for you. Our advanced platform analyzes your goals, current proficiency, and learning style to create a customized path that optimizes your progress and ensures effective skill development.",
+    description: "Staff will experience a tailored educational journey designed just for their work role. Our advanced platform analyzes your goals, current proficiency, and learning style to create a customized path that optimizes their progress and ensures effective skill development.",
     image: "/icons/hero-section.png",
     isReversed: false,
   },
   {
-    title: "AI-Driven Practice",
-    description: "Engage in realistic conversations and scenarios powered by advanced AI technology. Practice your language skills in authentic situations that adapt to your level, providing immediate feedback and helping you build genuine communication confidence.",
+    title: "Real-World Scenarios, Specific For Staffs' Role",
+    description: "Employees engage in realistic conversations and scenarios powered by advanced AI technology. Staff will practice their language skills in authentic situations that adapt to their level, providing immediate feedback and helping them build genuine communication confidence.",
     image: "/icons/real-world-simulation.png",
     isReversed: true,
   },
   {
-    title: "User Information Management",
-    description: "Take control of your learning journey with our intuitive information management system. Track your progress, manage your schedule, and access your learning materials - all in one centralized, easy-to-navigate platform.",
+    title: "Measure Progress",
+    description: "Take control of staffs' learning journey with our intuitive information management system. Track their progress, manage your schedule, and access learning materials - all in one centralized, easy-to-navigate platform.",
     image: "/icons/user-info.png",
     isReversed: false,
   },
   {
-    title: "Certification Tracking",
-    description: "Monitor your achievements and showcase your success. Keep track of completed courses, earned certificates, and skill validations. Build a comprehensive portfolio of your language learning accomplishments all in one place.",
+    title: "Certificate of Completion",
+    description: "Monitor employees' achievements and showcase their success. Keep track of completed courses, earned certificates, and skill validations. Build a comprehensive portfolio of staffs' language learning accomplishments all in one place.",
     image: "/icons/certificate.png",
     isReversed: true,
   },
@@ -71,9 +71,9 @@ const LearningJourneySections = () => {
             </div>
             
             <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-              How Does{' '}
-              <span className="relative">
-                <span className="text-blue-600">FluentPro</span>
+              Designed for{' '}
+              <span className="relative inline-block">
+                <span className="text-blue-600">Learners</span>
                 <motion.span
                   className="absolute -bottom-2 left-0 h-1 w-full bg-blue-600/30"
                   initial={{ scaleX: 0 }}
@@ -81,11 +81,20 @@ const LearningJourneySections = () => {
                   transition={{ delay: 0.5, duration: 0.6 }}
                 />
               </span>
-              {' '}Work?
+              .{' '}Loved by{' '}
+              <span className="relative inline-block">
+                <span className="text-blue-600">HR</span>
+                <motion.span
+                  className="absolute -bottom-2 left-0 h-1 w-full bg-blue-600/30"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ delay: 0.7, duration: 0.6 }}
+                />
+              </span>
             </h2>
             
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Master language learning through our proven 4-step process
+              FluentPro streamlines the recruitment and learning & development process.
             </p>
           </motion.div>
         </div>
