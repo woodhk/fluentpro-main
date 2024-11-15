@@ -8,6 +8,9 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import PlatformFeatures from '@/components/layouts/PlatformFeatures';
 import LearningProcessSection from '@/components/layouts/LandingFunctionality';
+import LandingTestimonial from '@/components/layouts/LandingTestimonial';
+import LandingCta from '@/components/layouts/LandingCta';
+import Footer from '@/components/layouts/Footer';
 
 
 // Testimonials Data
@@ -145,7 +148,7 @@ const LandingPage = () => {
 
               {/* Desktop Navigation */}
               <div className="hidden md:flex items-center space-x-8">
-                {['Home', 'About Us', 'Courses', 'Contact'].map((item) => (
+                {['Home', 'About Us', 'Contact'].map((item) => (
                   <motion.a
                     key={item}
                     href="#"
@@ -158,7 +161,7 @@ const LandingPage = () => {
                   className="bg-violet-600 hover:bg-violet-700 text-white px-6 rounded-full"
                   variant="default"
                 >
-                  Sign Up
+                  Join the Waitlist
                 </Button>
               </div>
 
@@ -183,7 +186,7 @@ const LandingPage = () => {
             >
               <span className="bg-violet-100 text-violet-600 px-4 py-1 rounded-full text-sm font-medium inline-flex items-center gap-2">
                 <span className="w-2 h-2 bg-violet-600 rounded-full"></span>
-                We've just released a new feature
+                We've just opened up 5 spots
                 <ChevronRight className="w-4 h-4" />
               </span>
             </motion.div>
@@ -408,6 +411,9 @@ const LandingPage = () => {
       </section>
       <PlatformFeatures />
       <LearningProcessSection />
+      <LandingTestimonial />
+      <LandingCta />
+      <Footer />
     </main>
   );
 };
