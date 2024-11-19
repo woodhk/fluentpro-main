@@ -5,28 +5,34 @@ import { motion } from 'framer-motion';
 
 const sections = [
   {
-    title: "Personalized Learning Path",
-    description: "Staff will experience a tailored educational journey designed just for their work role. Our advanced platform analyzes your goals, current proficiency, and learning style to create a customized path that optimizes their progress and ensures effective skill development.",
+    title: "Support for Your L&D Goals",
+    description: "Our Customer Success and Support teams work hand-in-hand with your L&D team to ensure smooth onboarding, effective learning, and continuous growth.",
     image: "/icons/hero-section.png",
     isReversed: false,
   },
   {
-    title: "Real-World Scenarios",
-    description: "Employees engage in realistic conversations and scenarios powered by advanced AI technology. Staff will practice their language skills in authentic situations that adapt to their level, providing immediate feedback and helping them build genuine communication confidence.",
+    title: "A Powerful Admin Portal for Leaders",
+    description: "With the FluentPro Admin Portal, you can quickly onboard learners, personalize training content, and monitor learning outcomes with ease.",
     image: "/icons/real-world-simulation.png",
     isReversed: true,
   },
   {
-    title: "Measure Progress",
-    description: "Take control of staffs' learning journey with our intuitive information management system. Measure the progress of employees, departments, or the whole company using FluentPro's Admin dashboards.",
+    title: "Learning On-Demand",
+    description: "Your team can learn anytime, anywhere on any device— no need to drive anywhere or coordinate schedules with others, allowing for uninterrupted progress at their convenience.",
     image: "/icons/user-info.png",
     isReversed: false,
   },
   {
-    title: "Certificate of Completion",
-    description: "Monitor employees' achievements and showcase their success. Keep track of completed courses, earned certificates, and skill validations. Build a comprehensive portfolio of staffs' language learning accomplishments all in one place.",
-    image: "/icons/certificate.png",
+    title: "Expert-Designed",
+    description: "FluentPro’s curriculum leverages 30+ years of hands-on Business English teaching experience, combined with input from top-tier language scientists, to deliver targeted, workplace-ready skills, tailored for Hong Kong learners.",
+    image: "/icons/chart.png",
     isReversed: true,
+  },
+  {
+    title: "Certificate of Completion",
+    description: "To validate employees business English proficiency, they'll receive an official certificate of completion.",
+    image: "/icons/certificate2.png",
+    isReversed: false,
   },
 ];
 
@@ -93,7 +99,7 @@ const LearningJourneySections = () => {
               </span>
             </h2>
             
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-3xl text-gray-600 max-w-2xl mx-auto">
               FluentPro streamlines the recruitment and learning & development process.
             </p>
           </motion.div>
@@ -173,12 +179,12 @@ const LearningJourneySections = () => {
                   </motion.div>
 
                   {/* Title */}
-                  <h3 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                  <h3 className="text-xl font-bold tracking-tight text-gray-900 sm:text-5xl">
                     {section.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-lg leading-relaxed text-gray-600">
+                  <p className="text-xl leading-relaxed text-gray-600">
                     {section.description}
                   </p>
 

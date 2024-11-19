@@ -80,7 +80,7 @@ const LandingStatistics: React.FC = () => {
       value: 245,
       suffix: "Hours",
       label: "Increased Efficiency and Productivity",
-      description: "AI integration in training programs can lead to significant time savings for employees.",
+      description: "AI language training saves workers 245 hours a year by reducing miscommunication and freeing time for high-value tasks that drive company growth.",
       gradient: "bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent"
     }
   ];
@@ -106,11 +106,11 @@ const LandingStatistics: React.FC = () => {
 
       <div className="relative px-6 py-24 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-            A Personal AI English-Speaking Coach For Every Employee
+          <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+            The Science Behind AI Powered Language Training
           </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
-            FluentPro helps your employees build confidence and improve speaking skills through practicing real-world scenarios for their work, without the pressure. No physical classes needed...
+          <p className="mt-4 text-xl text-gray-600">
+            Helping your team learn faster, more effectively, and with greater engagement.
           </p>
         </div>
 

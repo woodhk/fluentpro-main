@@ -190,12 +190,11 @@ const LandingTestimonial = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="text-sm font-medium text-violet-600 mb-2">TESTIMONIALS</div>
-          <h2 className="text-5xl sm:text-5xl font-bold text-gray-900 mb-4">
-            What our clients say
+          <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-4">
+            Hear from Our Clients
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Join thousands of satisfied professionals who have improved their business English with
-            our specialized training programs.
+          <p className="text-gray-600 max-w-2xl mx-auto text-xl">
+            Join hundreds of satisfied industry leaders who have improved their teams Business English with our specialized training programs.
           </p>
         </div>
 

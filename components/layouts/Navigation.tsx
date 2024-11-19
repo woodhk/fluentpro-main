@@ -63,7 +63,7 @@ const Navigation = ({ isScrolled, isMobileMenuOpen, setIsMobileMenuOpen }: Navig
               className="bg-violet-600 hover:bg-violet-700 text-white px-6 rounded-full"
               variant="default"
             >
-              Join the Waitlist
+              Sign-Up for Early Access
             </Button>
           </div>
 

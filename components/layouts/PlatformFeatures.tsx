@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
-import { BookOpen, Clock, Award, LineChart } from 'lucide-react';
+import { BookOpen, Clock, Award, LineChart, Phone, Tablet } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const PlatformFeatures = () => {
@@ -39,7 +39,7 @@ const PlatformFeatures = () => {
     {
       icon: <BookOpen className="h-7 w-7" />,
       title: "Real-World Simulations",
-      description: "Staff will practice their business communication skills through real world scenarios they experience in the workplace everyday",
+      description: "With 100+ sentences spoken weekly, learners steadily expand their vocabulary to excel in the workplace.",
       color: "from-rose-400 to-pink-600",
       lightColor: "from-rose-50 to-pink-50",
       gradient: "group-hover:from-rose-500/20 group-hover:to-pink-500/20"
@@ -55,15 +55,15 @@ const PlatformFeatures = () => {
     {
       icon: <LineChart className="h-7 w-7" />,
       title: "Personalized Learning Path",
-      description: "Staff will have custom curriculums tailored to their industry and proficiency",
+      description: "Using AI, FluentPro creates personalized lessons that align perfectly with your team’s specific requirements and objectives.",
       color: "from-violet-400 to-purple-600",
       lightColor: "from-violet-50 to-purple-50",
       gradient: "group-hover:from-violet-500/20 group-hover:to-purple-500/20"
     },
     {
-      icon: <Award className="h-7 w-7" />,
-      title: "Certificate of Completion",
-      description: "To validate employees business English proficiency, they'll receive an official certificate of completion",
+      icon: <Tablet className="h-7 w-7" />,
+      title: "Fully Mobile Responsive",
+      description: "Our mobile-responsive design allows your team to refine their Business English skills wherever they are.",
       color: "from-emerald-400 to-teal-600",
       lightColor: "from-emerald-50 to-teal-50",
       gradient: "group-hover:from-emerald-500/20 group-hover:to-teal-500/20"
@@ -121,18 +121,18 @@ const PlatformFeatures = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-5xl font-bold tracking-tight mb-6">
-          Replacing Traditional English Training With{" "}
+          <h2 className="text-6xl font-bold tracking-tight mb-6">
+              Introducing{" "}
             <span className="relative">
               <span className="relative z-10 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                FluentPro
+                FluentPro...
               </span>
               <span className="absolute -bottom-2 left-0 right-0 h-3 bg-gradient-to-r from-blue-200/50 to-purple-200/50 -z-10 transform -skew-x-12" />
             </span>
           </h2>
           
-          <p className="text-lg text-gray-600 leading-relaxed">
-            Save thousands on tutoring costs with FluentPro. Our AI, built on 30+ years of Business English training experience, provides your employees with personalized learning paths, feedback, and real-world scenario simulations—all without the need for physical classes.
+          <p className="text-2xl text-gray-600 leading-relaxed">
+             A Personal AI English-Speaking Coach For Every Employee
           </p>
         </motion.div>
 

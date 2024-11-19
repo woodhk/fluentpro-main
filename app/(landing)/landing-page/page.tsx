@@ -14,6 +14,7 @@ import Footer from '@/components/layouts/Footer';
 import LandingStatistics from '@/components/layouts/LandingStatistics';
 import HeroStats from '@/components/layouts/HeroStats';
 import Navigation from '@/components/layouts/Navigation';
+import AboutPage from '@/app/(landing)/landing-page/about/page';
 
 
 // Testimonials Data
@@ -153,15 +154,15 @@ const LandingPage = () => {
                 className="text-4xl sm:text-6xl font-bold text-gray-900"
               >
                 Improve Your Employees'{' '}
-                <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">English Speaking Skills</span>
+                <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">Business English Speaking Skills</span>
               </motion.h1>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-lg text-gray-600 max-w-2xl mx-auto"
+                className="text-xl text-gray-600 max-w-2xl mx-auto"
               >
-                The LanguageKey has been a trusted partner for Business English training in banks, hotels, F&B companies, and other top industries for over 30 years. With AI, we’ve transformed this expertise into a scalable, personalized training solution: FluentPro.
+                Bring your organization an advanced AI language training solution.
               </motion.p>
 
               {/* Feature List */}
@@ -192,13 +193,7 @@ const LandingPage = () => {
                 className="flex flex-col sm:flex-row gap-4 justify-center"
               >
                 <Button className="bg-violet-600 hover:bg-violet-700 text-white px-8 py-6 text-lg rounded-full">
-                  Join the Waitlist
-                </Button>
-                <Button 
-                  variant="outline"
-                  className="group px-8 py-6 text-lg rounded-full border-2"
-                >
-                  Preview Platform
+                  Sign-Up for Early Access
                 </Button>
               </motion.div>
 
@@ -235,8 +230,8 @@ const LandingPage = () => {
       <section className="py-20 bg-white overflow-hidden">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <p className="text-lg text-gray-600 mb-2">Clients we've helped...</p>
-          <h2 className="text-5xl font-semibold text-gray-900">Respected and Trusted in Asia for 30+ Years</h2>
+          <h2 className="text-5xl font-semibold text-gray-900 mb-4">Trusted by 100+ Leading Brands</h2>
+          <p className="text-xl text-gray-600">Leading Brands Rely on The LanguageKey for effective Business English Training</p>
         </div>
 
         {/* Logos Container */}
@@ -343,8 +338,9 @@ const LandingPage = () => {
         </div>
       </section>
       <PlatformFeatures />
-      <LandingStatistics />
+      <AboutPage />
       <LearningProcessSection />
+      <LandingStatistics />
       <LandingTestimonial />
       <LandingCta />
       <Footer />

@@ -23,8 +23,8 @@ const Footer = () => {
   const contactInfo = [
     {
       icon: <Mail className="h-5 w-5" />,
-      text: 'enquiry@workplace-english-training.com',
-      href: 'mailto:enquiry@workplace-english-training.com',
+      text: 'fluentpro@languagekey.com',
+      href: 'mailto:fluentpro@languagekey.com',
     },
     {
       icon: <Phone className="h-5 w-5" />,
