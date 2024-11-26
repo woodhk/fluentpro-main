@@ -1,15 +1,23 @@
+// pages/CohortDashboard.tsx
 "use client";
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogHeader, 
+  DialogTitle, 
+  DialogFooter 
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 import { Clock, BookOpen, GraduationCap, DollarSign, Target, Info } from 'lucide-react';
+import PerformanceChart from "@/components/layouts/PerformanceChart";
+import ErrorDistributionChart from '@/components/layouts/ErrorDistributionChart';
+import PerformanceProgressChart from '@/components/layouts/PerformanceProgressChart';
 
-// Types remain the same as before
 interface MetricCardProps {
   label: string;
   value: string | number;
@@ -33,6 +41,38 @@ interface DialogProps {
   initialWeeklyLessons?: number;
   initialPerformanceLevels?: PerformanceLevels;
 }
+
+const MetricCard: React.FC<MetricCardProps> = ({ 
+  label, 
+  value, 
+  suffix, 
+  icon: Icon,
+  trend 
+}) => (
+  <Card className="relative overflow-hidden group hover:shadow-lg transition-shadow duration-300 bg-white shadow-sm border border-gray-100">
+    <div className="p-6">
+      <div className="flex items-center justify-between mb-4">
+        <div className="p-2 rounded-lg bg-blue-50 text-blue-600">
+          <Icon className="h-5 w-5" />
+        </div>
+        {trend && (
+          <span className={`text-sm font-medium ${
+            trend.direction === 'up' ? 'text-green-600' : 'text-red-600'
+          }`}>
+            {trend.direction === 'up' ? '+' : '-'}{trend.value}%
+          </span>
+        )}
+      </div>
+      <div className="text-3xl font-bold text-gray-900 mb-2">
+        {value}{suffix}
+      </div>
+      <div className="text-sm text-gray-600">
+        {label}
+      </div>
+    </div>
+    <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+  </Card>
+);
 
 const PerformanceTargetsDialog: React.FC<DialogProps> = ({ 
   open, 
@@ -63,7 +103,6 @@ const PerformanceTargetsDialog: React.FC<DialogProps> = ({
         </DialogHeader>
 
         <div className="py-6 space-y-8">
-          {/* Weekly Lessons Section */}
           <div className="space-y-6 bg-gray-50 p-6 rounded-lg">
             <div className="flex items-start justify-between">
               <div className="space-y-1">
@@ -91,7 +130,6 @@ const PerformanceTargetsDialog: React.FC<DialogProps> = ({
             </div>
           </div>
 
-          {/* Performance Levels Section */}
           <div className="space-y-6">
             <div className="flex items-start gap-2">
               <h3 className="text-base font-medium text-gray-900">Performance Thresholds</h3>
@@ -102,7 +140,6 @@ const PerformanceTargetsDialog: React.FC<DialogProps> = ({
                 </div>
               </button>
             </div>
-
             <div className="grid gap-6">
               {Object.entries(performanceLevels).map(([level, value], index) => (
                 <div key={level} className="space-y-4 bg-gray-50 p-6 rounded-lg">
@@ -170,106 +207,15 @@ const PerformanceTargetsDialog: React.FC<DialogProps> = ({
   );
 };
 
-// The rest of the components (MetricCard, CohortDashboard) remain exactly the same as in the previous code
-
-const MetricCard: React.FC<MetricCardProps> = ({ 
-  label, 
-  value, 
-  suffix, 
-  icon: Icon,
-  trend 
-}) => (
-  <Card className="relative overflow-hidden group hover:shadow-lg transition-shadow duration-300 bg-white shadow-sm border border-gray-100">
-    <div className="p-6">
-      <div className="flex items-center justify-between mb-4">
-        <div className="p-2 rounded-lg bg-blue-50 text-blue-600">
-          <Icon className="h-5 w-5" />
-        </div>
-        {trend && (
-          <span className={`text-sm font-medium ${
-            trend.direction === 'up' ? 'text-green-600' : 'text-red-600'
-          }`}>
-            {trend.direction === 'up' ? '+' : '-'}{trend.value}%
-          </span>
-        )}
-      </div>
-      <div className="text-3xl font-bold text-gray-900 mb-2">
-        {value}{suffix}
-      </div>
-      <div className="text-sm text-gray-600">
-        {label}
-      </div>
-    </div>
-    <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-  </Card>
-);
-
 const CohortDashboard: React.FC = () => {
   const router = useRouter();
   const [isKPIDialogOpen, setIsKPIDialogOpen] = useState(false);
   const [weeklyLessons, setWeeklyLessons] = useState(3);
-  const [performanceLevels, setPerformanceLevels] = useState({
+  const [performanceLevels, setPerformanceLevels] = useState<PerformanceLevels>({
     level1: 80,
     level2: 70,
     level3: 60
   });
-
-  const commonErrorsData = [
-    { name: 'Grammar', value: 30, color: '#60A5FA' },
-    { name: 'Pronunciation', value: 25, color: '#F97316' },
-    { name: 'Vocabulary', value: 25, color: '#22C55E' },
-    { name: 'Sentence Structure', value: 20, color: '#4B5563' }
-  ];
-
-  const lowestPerformingData = [
-    { name: 'Business English', value: 35, color: '#60A5FA' },
-    { name: 'Academic Writing', value: 30, color: '#4B5563' },
-    { name: 'Public Speaking', value: 35, color: '#22C55E' }
-  ];
-
-  const renderPieChart = (data: any[]) => (
-    <div className="h-[280px] w-full">
-      <ResponsiveContainer>
-        <PieChart>
-          <Pie
-            data={data}
-            cx="50%"
-            cy="50%"
-            innerRadius={50}
-            outerRadius={80}
-            fill="#8884d8"
-            paddingAngle={2}
-            dataKey="value"
-          >
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={entry.color} />
-            ))}
-          </Pie>
-          <Tooltip 
-            contentStyle={{ 
-              backgroundColor: 'white',
-              borderRadius: '8px',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-              border: 'none'
-            }}
-          />
-          <Legend 
-            layout="horizontal"
-            align="center"
-            verticalAlign="bottom"
-            formatter={(value) => (
-              <span className="text-sm text-gray-600">{value}</span>
-            )}
-            wrapperStyle={{
-              paddingTop: '20px'
-            }}
-            iconType="circle"
-            iconSize={8}
-          />
-        </PieChart>
-      </ResponsiveContainer>
-    </div>
-  );
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -325,15 +271,12 @@ const CohortDashboard: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <Card className="p-6 bg-white shadow-sm border border-gray-100">
-              <h3 className="text-lg font-semibold text-gray-900 mb-6">Common English Errors</h3>
-              {renderPieChart(commonErrorsData)}
-            </Card>
-            <Card className="p-6 bg-white shadow-sm border border-gray-100">
-              <h3 className="text-lg font-semibold text-gray-900 mb-6">Lowest Performing Lessons</h3>
-              {renderPieChart(lowestPerformingData)}
-            </Card>
+            <PerformanceChart />
+            <ErrorDistributionChart />
           </div>
+
+          <PerformanceProgressChart />
+
           <Card className="p-6 bg-white shadow-sm border border-gray-100">
             <div className="flex items-center justify-between mb-6">
               <div>

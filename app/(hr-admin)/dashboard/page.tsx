@@ -11,17 +11,15 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { 
-  PieChart, 
-  Pie, 
-  Cell, 
-  ResponsiveContainer,
   LineChart,
   Line,
   XAxis,
   YAxis,
   Tooltip,
-} from 'recharts'; 
+  ResponsiveContainer
+} from 'recharts';
 import { LucideIcon, TrendingUp, Users, BookOpen, Award, DollarSign } from 'lucide-react';
+import ErrorDistributionChart from '@/components/layouts/ErrorDistributionChart';
 
 // TypeScript Interfaces
 interface TrendData {
@@ -61,13 +59,6 @@ const users: UserData[] = [
   { username: "Linda Zhang", level: 3, hoursSpent: 19, completedLessons: 17, progress: "78" },
 ];
 
-const errorDistributionData = [
-  { name: 'Offering Help', value: 25, color: '#3B82F6' },
-  { name: 'Small Talk', value: 30, color: '#EAB308' },
-  { name: 'First Meetings', value: 25, color: '#22C55E' },
-  { name: 'Negotiations', value: 20, color: '#4B5563' },
-];
-
 const StatCard: React.FC<StatCardProps> = ({ icon: Icon, title, value, trend, bgColor }) => (
   <Card className="p-6 bg-white shadow-sm hover:shadow-md transition-all border border-gray-100">
     <div className="flex items-start justify-between">
@@ -81,43 +72,6 @@ const StatCard: React.FC<StatCardProps> = ({ icon: Icon, title, value, trend, bg
     </div>
     <h3 className="mt-4 text-sm font-medium text-gray-600">{title}</h3>
     <p className="mt-2 text-2xl font-bold text-gray-900">{value}</p>
-  </Card>
-);
-
-const ErrorDistributionChart: React.FC = () => (
-  <Card className="p-6 bg-white shadow-sm border border-gray-100">
-    <h2 className="text-lg font-semibold mb-6">Lowest Performing Lessons</h2>
-    <div className="h-[260px]">
-      <ResponsiveContainer width="100%" height="100%">
-        <PieChart>
-          <Pie
-            data={errorDistributionData}
-            cx="50%"
-            cy="50%"
-            innerRadius={60}
-            outerRadius={80}
-            dataKey="value"
-            label={({ value }) => `${value}%`}
-            labelLine={false}
-          >
-            {errorDistributionData.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={entry.color} />
-            ))}
-          </Pie>
-        </PieChart>
-      </ResponsiveContainer>
-    </div>
-    <div className="flex flex-wrap justify-center gap-4 mt-4 px-2">
-      {errorDistributionData.map((item) => (
-        <div key={item.name} className="flex items-center gap-2">
-          <div 
-            className="w-3 h-3 rounded-full flex-shrink-0" 
-            style={{ backgroundColor: item.color }} 
-          />
-          <span className="text-sm text-gray-600 whitespace-nowrap">{item.name}</span>
-        </div>
-      ))}
-    </div>
   </Card>
 );
 
