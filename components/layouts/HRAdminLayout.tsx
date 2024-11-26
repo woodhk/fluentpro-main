@@ -287,6 +287,12 @@ const HRAdminLayout = ({ children, activeTab = 'dashboard' }: HRAdminLayoutProps
       path: '/reports-analytics/individual'
     },
     {
+      id: 'results',
+      label: 'Assessment Results',
+      icon: Trophy,
+      path: '/results'
+    },
+    {
       id: 'settings',
       label: 'Settings',
       icon: Settings,

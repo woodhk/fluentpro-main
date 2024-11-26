@@ -19,16 +19,16 @@ import AboutPage from '@/app/(landing)/landing-page/about/page';
 
 // Testimonials Data
 const row1Testimonials = [
-  'adidas', 'arup', 'bank-east-asia', 'bank-of-china', 'bdo',
-  'blue-cross', 'bq', 'cbre', 'db-schenker', 'deloitte',
+  'adidas', 'arup', 'bank-east-asia', 'bank-of-china', 'bdo', 'deloitte',
+  'jp-morgan', 'blue-cross', 'bq', 'cbre', 'db-schenker',
   'dhl', 'dksh', 'hang-seng-bank', 'hk-international-airport', 'hk-jockey-club',
-  'hutchison', 'icbc', 'imagine-group', 'ing', 'jp-morgan'
+  'hutchison', 'icbc', 'imagine-group', 'ing', 
 ];
 
 const row2Testimonials = [
-  'land-registry', 'lane-crawford', 'li-fung', 'lvmh', 'manulife',
+  'land-registry', 'hsbc', 'lane-crawford', 'li-fung', 'lvmh', 'manulife', 'pwc',
   'mothercare', 'mtr', 'parsons', 'pccw', 'phillips',
-  'poly', 'pwc', 'sfc', 'sino', 'smartone',
+  'poly', 'sfc', 'sino', 'smartone',
   'sony', 'sun-hung', 'sun-life', 'towngas', 'west-kowloon',
   'zurich'
 ];
@@ -153,7 +153,8 @@ const LandingPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-4xl sm:text-6xl font-bold text-gray-900"
               >
-                Improve Your Employees'{' '}
+                Improve Your Teams{' '}
+                <br />
                 <span className="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">Business English Speaking Skills</span>
               </motion.h1>
 

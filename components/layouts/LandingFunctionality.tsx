@@ -5,13 +5,13 @@ import { motion } from 'framer-motion';
 
 const sections = [
   {
-    title: "Support for Your L&D Goals",
+    title: "Hands-On Support",
     description: "Our Customer Success and Support teams work hand-in-hand with your L&D team to ensure smooth onboarding, effective learning, and continuous growth.",
     image: "/icons/hero-section.png",
     isReversed: false,
   },
   {
-    title: "A Powerful Admin Portal for Leaders",
+    title: "One Portal for All Your L&D Needs",
     description: "With the FluentPro Admin Portal, you can quickly onboard learners, personalize training content, and monitor learning outcomes with ease.",
     image: "/icons/real-world-simulation.png",
     isReversed: true,

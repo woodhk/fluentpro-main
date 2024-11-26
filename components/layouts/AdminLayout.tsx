@@ -57,6 +57,12 @@ const MasterAdminLayout = ({ children, activeTab = 'dashboard' }: MasterAdminLay
       path: '/admin/manage'
     },
     {
+      id: 'marking',
+      label: 'Marking',
+      icon: FileSpreadsheet,
+      path: '/admin/marking'
+    },
+    {
       id: 'settings',
       label: 'Settings',
       icon: Settings,
