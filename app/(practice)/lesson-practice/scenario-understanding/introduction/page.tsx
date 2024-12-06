@@ -63,7 +63,7 @@ const ScenarioIntroductionPage = () => {
           <div className="flex items-center gap-6">
             <Button
               variant="ghost"
-              onClick={() => router.push(`/learning-path-lesson-details/${lessonSlug}`)}
+              onClick={() => router.push(`/lesson-practice/scenario-understanding/context-understanding?lesson=${lessonSlug}`)}
               className="text-gray-600 hover:text-gray-900"
             >
               Skip
@@ -123,13 +123,13 @@ const ScenarioIntroductionPage = () => {
           </Card>
 
           <div className="mt-12 flex justify-center">
-            <Button
-              size="lg"
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-xl flex items-center gap-2 shadow-lg hover:shadow-xl transition-all"
-              onClick={() => router.push(`/lesson-practice/scenario-understanding/read-listen?lesson=${lessonSlug}`)}
+          <Button
+             size="lg"
+             className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg rounded-xl flex items-center gap-2 shadow-lg           hover:shadow-xl transition-all"
+             onClick={() => router.push(`/lesson-practice/scenario-understanding/context-understanding?lesson=${lessonSlug}`)}
             >
-              Read and Listen
-              <ChevronRight className="h-5 w-5" />
+             Context Understanding
+             <ChevronRight className="h-5 w-5" />
             </Button>
           </div>
         </div>

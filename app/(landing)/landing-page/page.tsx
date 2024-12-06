@@ -141,7 +141,7 @@ const LandingPage = () => {
             >
               <span className="bg-violet-100 text-violet-600 px-4 py-1 rounded-full text-sm font-medium inline-flex items-center gap-2">
                 <span className="w-2 h-2 bg-violet-600 rounded-full"></span>
-                We've just opened up 5 spots
+                We've just opened up 10 spots
                 <ChevronRight className="w-4 h-4" />
               </span>
             </motion.div>

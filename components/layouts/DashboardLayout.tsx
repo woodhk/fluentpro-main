@@ -1,5 +1,8 @@
+"use client";
+
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -15,6 +18,7 @@ import {
   ChevronDown,
   MenuIcon,
   ChevronLeft,
+  BookOpen
 } from 'lucide-react'
 
 interface DashboardLayoutProps {
@@ -26,6 +30,12 @@ const DashboardLayout = ({ children, activeTab = 'learning-path' }: DashboardLay
   const router = useRouter()
   const [currentTab, setCurrentTab] = useState(activeTab)
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+
+  // Mock enrolled courses data
+  const enrolledCourses = [
+    { id: 1, title: "Business English Fundamentals", progress: 65 },
+    { id: 2, title: "Professional Communication", progress: 30 }
+  ]
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -46,7 +56,13 @@ const DashboardLayout = ({ children, activeTab = 'learning-path' }: DashboardLay
                   <MenuIcon className="h-5 w-5 text-blue-600" />
                 )}
               </Button>
-              <img src="/icons/logo.svg" alt="FluentPro Logo" className="h-8 transform hover:scale-105 transition-transform duration-200" />
+              <Image 
+                src="/icons/logo.svg" 
+                alt="FluentPro Logo" 
+                width={120}
+                height={30}
+                className="h-8 transform hover:scale-105 transition-transform duration-200"
+              />
             </div>
           </div>
 
@@ -96,6 +112,24 @@ const DashboardLayout = ({ children, activeTab = 'learning-path' }: DashboardLay
                 <GraduationCap className="h-5 w-5" />
                 Learning Path
               </Button>
+              
+              {/* Courses Tab */}
+              <Button
+                variant={currentTab === 'courses' ? 'default' : 'ghost'}
+                className={`w-full justify-start gap-3 text-lg rounded-xl h-12 transition-all duration-200 ${
+                  currentTab === 'courses' 
+                    ? 'bg-blue-600 text-white hover:bg-blue-700' 
+                    : 'hover:bg-blue-50 text-gray-600'
+                }`}
+                onClick={() => {
+                  setCurrentTab('courses')
+                  router.push('/courses')
+                }}
+              >
+                <BookOpen className="h-5 w-5" />
+                Courses
+              </Button>
+
               <Button
                 variant={currentTab === 'performance' ? 'default' : 'ghost'}
                 className={`w-full justify-start gap-3 text-lg rounded-xl h-12 transition-all duration-200 ${
@@ -146,6 +180,23 @@ const DashboardLayout = ({ children, activeTab = 'learning-path' }: DashboardLay
               Level 1
             </div>
             <p className="text-gray-500 mb-8">Software Engineer</p>
+
+            {/* Enrolled Courses Section */}
+            <div className="w-full space-y-4 mb-8">
+              <h4 className="text-left font-semibold text-gray-700">Enrolled Courses</h4>
+              {enrolledCourses.map(course => (
+                <div key={course.id} className="bg-gray-50 rounded-xl p-4 text-left">
+                  <h5 className="font-medium text-gray-800 mb-2">{course.title}</h5>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div 
+                      className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                      style={{ width: `${course.progress}%` }}
+                    />
+                  </div>
+                  <p className="text-sm text-gray-600 mt-1">{course.progress}% complete</p>
+                </div>
+              ))}
+            </div>
             
             <Button
               className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white rounded-xl h-12 shadow-sm transition-all duration-300 transform hover:scale-[1.02]"
