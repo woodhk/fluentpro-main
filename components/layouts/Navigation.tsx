@@ -14,7 +14,7 @@ interface NavigationProps {
 const Navigation = ({ isScrolled, isMobileMenuOpen, setIsMobileMenuOpen }: NavigationProps) => {
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'About', path: '/landing-page/about' },
+    { name: 'Learn More', path: '/training-video-1' },
     { name: 'Contact', path: '#' }
   ];
 
