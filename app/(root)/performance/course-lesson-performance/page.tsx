@@ -59,9 +59,9 @@ const LessonPerformancePage = () => {
       <div className="bg-gradient-to-r from-blue-600 to-blue-500 text-white px-6 py-8">
         <div className="max-w-6xl mx-auto space-y-6">
           <div className="flex items-center gap-2 text-blue-100">
-            <span>Learning Path</span>
+            <span>Courses</span>
             <ChevronRight className="h-4 w-4" />
-            <span>Learning Path Name Lesson</span>
+            <span>Course Name Lesson</span>
           </div>
           <h1 className="text-3xl font-bold">Performance Analytics</h1>
         </div>

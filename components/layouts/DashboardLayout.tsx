@@ -4,6 +4,13 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
+import { Lock } from 'lucide-react'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,7 +23,7 @@ import {
   Settings,
   UserCircle,
   ChevronDown,
-  MenuIcon,
+  Menu as MenuIcon,
   ChevronLeft,
   BookOpen
 } from 'lucide-react'
@@ -80,11 +87,17 @@ const DashboardLayout = ({ children, activeTab = 'learning-path' }: DashboardLay
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-48 p-2 bg-white border shadow-lg rounded-xl mt-2">
-              <DropdownMenuItem className="rounded-lg hover:bg-blue-50 focus:bg-blue-50 cursor-pointer p-3 transition-colors duration-200" onSelect={() => router.push('/settings')}>
+              <DropdownMenuItem 
+                className="rounded-lg hover:bg-blue-50 focus:bg-blue-50 cursor-pointer p-3 transition-colors duration-200"
+                onSelect={() => router.push('/app/(hr-admin)/settings/my-details')}
+              >
                 <Settings className="h-4 w-4 mr-2 text-blue-600" />
                 Settings
               </DropdownMenuItem>
-              <DropdownMenuItem className="rounded-lg hover:bg-red-50 focus:bg-red-50 cursor-pointer p-3 text-red-600 transition-colors duration-200" onSelect={() => router.push('/sign-in')}>
+              <DropdownMenuItem 
+                className="rounded-lg hover:bg-red-50 focus:bg-red-50 cursor-pointer p-3 text-red-600 transition-colors duration-200"
+                onSelect={() => router.push('/sign-in')}
+              >
                 Logout
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -94,7 +107,11 @@ const DashboardLayout = ({ children, activeTab = 'learning-path' }: DashboardLay
 
       <div className="flex max-w-screen-2xl mx-auto">
         {/* Enhanced Left Sidebar */}
-        <aside className={`${isSidebarOpen ? 'w-72' : 'w-0'} bg-white shadow-sm min-h-[calc(100vh-73px)] overflow-hidden transition-all duration-300 ease-in-out`}>
+        <aside
+          className={`${
+            isSidebarOpen ? 'w-72' : 'w-0'
+          } bg-white shadow-sm min-h-[calc(100vh-73px)] overflow-hidden transition-all duration-300 ease-in-out`}
+        >
           <div className="p-6">
             <nav className="space-y-3">
               <Button
@@ -139,7 +156,7 @@ const DashboardLayout = ({ children, activeTab = 'learning-path' }: DashboardLay
                 }`}
                 onClick={() => {
                   setCurrentTab('performance')
-                  router.push('/performance/unit-performance')
+                  router.push('/performance/performances')
                 }}
               >
                 <ChartBar className="h-5 w-5" />
@@ -151,7 +168,7 @@ const DashboardLayout = ({ children, activeTab = 'learning-path' }: DashboardLay
               <Button
                 variant="ghost"
                 className="w-full justify-start gap-3 text-lg rounded-xl h-12 hover:bg-blue-50 text-gray-600 transition-all duration-200"
-                onClick={() => router.push('/settings')}
+                onClick={() => router.push('/settings/my-details')}
               >
                 <Settings className="h-5 w-5" />
                 Settings
@@ -177,7 +194,7 @@ const DashboardLayout = ({ children, activeTab = 'learning-path' }: DashboardLay
             
             <h3 className="font-semibold text-xl mt-6 mb-1">Alex Chen</h3>
             <div className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm font-medium mb-2">
-              Level 1
+              Level: Pre-Intermediate
             </div>
             <p className="text-gray-500 mb-8">Software Engineer</p>
 
@@ -198,12 +215,31 @@ const DashboardLayout = ({ children, activeTab = 'learning-path' }: DashboardLay
               ))}
             </div>
             
-            <Button
-              className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white rounded-xl h-12 shadow-sm transition-all duration-300 transform hover:scale-[1.02]"
-              onClick={() => window.open('https://www.workplace-english-training.com/emagazine/en/', '_blank')}
-            >
-              Open E-Platform
-            </Button>
+            <div className="w-full space-y-2">
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <div className="w-full">
+                      <Button
+                        className="w-full bg-gray-100 text-gray-500 rounded-xl h-12 shadow-sm transition-all duration-300 cursor-not-allowed flex items-center justify-center gap-2"
+                        disabled
+                      >
+                        <Lock className="h-4 w-4" />
+                        Open E-Platform
+                      </Button>
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent className="max-w-xs p-3 bg-white shadow-lg border rounded-lg">
+                    <p className="text-sm text-gray-700">
+                      This is a special gift! Complete your course to unlock access to our extensive library of business English materials. It's designed to help you continue improving your business English skills.
+                    </p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              <p className="text-sm text-gray-500 text-center">
+                Unlock this resource by completing your course
+              </p>
+            </div>
           </div>
         </aside>
       </div>

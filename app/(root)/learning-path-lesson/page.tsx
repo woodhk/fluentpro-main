@@ -11,24 +11,56 @@ import type { Lesson } from '@/app/types'
 const LearningPathLesson = () => {
   const router = useRouter()
 
-  // Define lesson type colors and icons
+  // Define lesson type colors but use the BookOpen icon for all lessons
   const getLessonStyle = (index: number) => {
     const styles = [
-      { icon: BookOpen, colors: { bg: 'bg-purple-50', iconBg: 'bg-purple-100', text: 'text-purple-600', hover: 'hover:bg-purple-700', gradient: 'from-purple-600 to-purple-400' } },
-      { icon: Lightbulb, colors: { bg: 'bg-emerald-50', iconBg: 'bg-emerald-100', text: 'text-emerald-600', hover: 'hover:bg-emerald-700', gradient: 'from-emerald-600 to-emerald-400' } },
-      { icon: BeakerIcon, colors: { bg: 'bg-amber-50', iconBg: 'bg-amber-100', text: 'text-amber-600', hover: 'hover:bg-amber-700', gradient: 'from-amber-600 to-amber-400' } },
-      { icon: MessagesSquare, colors: { bg: 'bg-rose-50', iconBg: 'bg-rose-100', text: 'text-rose-600', hover: 'hover:bg-rose-700', gradient: 'from-rose-600 to-rose-400' } }
+      {
+        icon: BookOpen,
+        colors: {
+          bg: 'bg-purple-50',
+          iconBg: 'bg-purple-100',
+          text: 'text-purple-600',
+          hover: 'hover:bg-purple-700',
+          gradient: 'from-purple-600 to-purple-400',
+        },
+      },
+      {
+        icon: BookOpen,
+        colors: {
+          bg: 'bg-emerald-50',
+          iconBg: 'bg-emerald-100',
+          text: 'text-emerald-600',
+          hover: 'hover:bg-emerald-700',
+          gradient: 'from-emerald-600 to-emerald-400',
+        },
+      },
+      {
+        icon: BookOpen,
+        colors: {
+          bg: 'bg-amber-50',
+          iconBg: 'bg-amber-100',
+          text: 'text-amber-600',
+          hover: 'hover:bg-amber-700',
+          gradient: 'from-amber-600 to-amber-400',
+        },
+      },
+      {
+        icon: BookOpen,
+        colors: {
+          bg: 'bg-rose-50',
+          iconBg: 'bg-rose-100',
+          text: 'text-rose-600',
+          hover: 'hover:bg-rose-700',
+          gradient: 'from-rose-600 to-rose-400',
+        },
+      },
     ]
     return styles[index % styles.length]
   }
 
+  // Redirect user to the scenarios page when "start learning" is clicked
   const handleLearnClick = (lesson: Lesson) => {
-    const slugifiedTitle = lesson.title
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)/g, '')
-    
-    router.push(`/learning-path-lesson-details/${slugifiedTitle}`)
+    router.push('/scenarios')
   }
 
   return (
@@ -42,11 +74,11 @@ const LearningPathLesson = () => {
               className="flex items-center gap-2 text-gray-600 hover:text-indigo-600 font-medium transition-colors duration-200"
             >
               <ChevronLeft className="h-5 w-5" />
-              <span className="text-2xl">Units</span>
+              <span className="text-2xl">learning path</span>
             </button>
             <span className="text-gray-400 text-2xl">/</span>
             <span className="text-2xl font-semibold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-              Unit 1 Lessons
+              Name Lessons
             </span>
           </div>
 
@@ -80,19 +112,7 @@ const LearningPathLesson = () => {
                       </div>
                       <h3 className="text-xl font-bold text-gray-900 mb-2">
                         {lesson.title}
-                      </h3>
-
-                      {/* Lesson Metadata */}
-                      <div className="flex items-center gap-4">
-                        <div className="flex items-center gap-2">
-                          <Clock className="h-4 w-4 text-gray-400" />
-                          <span className="text-sm text-gray-500">15 mins</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 rounded-full bg-violet-500"></div>
-                          <span className="text-sm text-gray-500">4 Activities</span>
-                        </div>
-                      </div>
+                      </h3>    
                     </div>
                   </div>
 
@@ -105,22 +125,11 @@ const LearningPathLesson = () => {
                   </Button>
                 </div>
 
-                {/* Progress Bar */}
+                {/* Replace progress bar with status (in progress or completed) */}
                 <div className="mt-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm text-gray-500">Progress</span>
-                    <span className={`text-sm font-medium ${style.colors.text}`}>
-                      {index === 0 ? '100%' : index === 1 ? '60%' : '0%'}
-                    </span>
-                  </div>
-                  <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                    <div 
-                      className={`h-full bg-gradient-to-r ${style.colors.gradient} rounded-full transition-all duration-500`}
-                      style={{ 
-                        width: index === 0 ? '100%' : index === 1 ? '60%' : '0%'
-                      }}
-                    ></div>
-                  </div>
+                  <span className={`text-sm font-medium ${style.colors.text}`}>
+                    {index === 0 ? 'Completed' : 'In progress'}
+                  </span>
                 </div>
               </div>
             )

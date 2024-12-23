@@ -1,157 +1,198 @@
 "use client";
 
-import React from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ChevronRight, Lock, Award, AlertTriangle, CheckCircle2 } from 'lucide-react';
+import { 
+  BookOpen, 
+  ChevronRight, 
+  Clock,
+  Star
+} from 'lucide-react';
 
-type UnitStatus = 'completed' | 'in-progress' | 'struggling' | 'locked';
-
-interface Unit {
-  name: string;
-  progress: number;
-  status: 'locked' | 'unlocked';
-}
-
-const UnitPerformancePage = () => {
-  const router = useRouter();
-  
-  const units: Unit[] = [
-    { name: 'Business Communication Skills', progress: 77.8, status: 'unlocked' },
-    { name: 'Business Meetings', progress: 89.9, status: 'unlocked' },
-    { name: 'Business Presentations', progress: 43.7, status: 'unlocked' },
-    { name: 'Advanced Negotiations', progress: 0, status: 'locked' },
-    { name: 'Professional Writing', progress: 0, status: 'locked' },
-    { name: 'Leadership Communication', progress: 0, status: 'locked' }
-  ];
-
-  const getProgressConfig = (progress: number) => {
-    if (progress >= 80) {
-      return {
-        icon: <CheckCircle2 className="h-5 w-5 text-emerald-500" />,
-        progressColor: 'bg-emerald-500',
-        badge: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-        label: 'Excellent'
-      };
-    } else if (progress >= 50) {
-      return {
-        icon: <Award className="h-5 w-5 text-yellow-500" />,
-        progressColor: 'bg-yellow-500',
-        badge: 'bg-yellow-50 text-yellow-700 border-yellow-200',
-        label: 'Good'
-      };
-    } else if (progress > 0) {
-      return {
-        icon: <AlertTriangle className="h-5 w-5 text-red-500" />,
-        progressColor: 'bg-red-500',
-        badge: 'bg-red-50 text-red-700 border-red-200',
-        label: 'Needs Improvement'
-      };
-    } else {
-      return {
-        icon: <Lock className="h-5 w-5 text-gray-400" />,
-        progressColor: 'bg-gray-200',
-        badge: 'bg-gray-50 text-gray-600 border-gray-200',
-        label: 'Locked'
-      };
-    }
-  };
-
-  const handleUnitClick = (unit: Unit) => {
-    if (unit.status !== 'locked') {
-      router.push('/performance/lesson-performance');
-    }
-  };
-
-  return (
-    <div className="max-w-4xl mx-auto p-6 space-y-8">
-      <div className="space-y-2">
-        <h1 className="text-3xl font-bold text-gray-900">Performance Overview</h1>
-        <p className="text-lg text-blue-600 font-medium">Unit Performance Tracking</p>
-      </div>
-
-      <Card className="shadow-lg border-gray-200">
-        <CardHeader className="border-b bg-gray-50">
-          <div className="flex justify-between items-center">
-            <CardTitle className="text-xl text-gray-800">Learning Units</CardTitle>
-            <div className="flex gap-4 text-sm">
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-emerald-500" />
-                <span>≥80%</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                <span>50-79%</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500" />
-                <span>&lt;50%</span>
-              </div>
-            </div>
-          </div>
-        </CardHeader>
-        <CardContent className="p-6">
-          <div className="space-y-4 max-h-[600px] overflow-y-auto custom-scrollbar pr-2">
-            {units.map((unit, index) => {
-              const progressConfig = getProgressConfig(unit.progress);
-              
-              return (
-                <div
-                  key={index}
-                  onClick={() => handleUnitClick(unit)}
-                  className={`group relative border rounded-xl p-5 transition-all duration-300 ease-in-out bg-white
-                    ${unit.status !== 'locked' ? 'hover:shadow-lg cursor-pointer' : 'opacity-75 cursor-not-allowed'}
-                  `}
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1 space-y-4">
-                      <div className="flex items-center justify-between">
-                        <div className="space-y-1">
-                          <h3 className={`font-semibold text-gray-900 
-                            ${unit.status !== 'locked' ? 'group-hover:text-blue-600' : ''} 
-                            transition-colors`}
-                          >
-                            {unit.name}
-                          </h3>
-                          <div className="flex items-center gap-2">
-                            {progressConfig.icon}
-                            <span className={`text-sm px-2 py-1 rounded-full border ${progressConfig.badge}`}>
-                              {progressConfig.label}
-                            </span>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          {unit.status !== 'locked' && (
-                            <span className="text-lg font-semibold text-gray-700">
-                              {unit.progress.toFixed(1)}%
-                            </span>
-                          )}
-                          <ChevronRight className={`h-5 w-5 text-gray-400 
-                            ${unit.status !== 'locked' ? 'group-hover:text-blue-500 group-hover:transform group-hover:translate-x-1' : ''} 
-                            transition-all`} 
-                          />
-                        </div>
-                      </div>
-                      
-                      <div className="relative h-2.5 w-full bg-gray-100 rounded-full overflow-hidden">
-                        <div
-                          className={`absolute left-0 top-0 h-full ${progressConfig.progressColor} transition-all duration-500 ease-out`}
-                          style={{ 
-                            width: `${unit.progress}%`,
-                            transform: `translateX(${unit.status === 'locked' ? '-100%' : '0'})` 
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  );
+type Course = {
+  id: string;
+  title: string;
+  completion: number;
+  averageScore: number;
+  lessonsCompleted: number;
+  totalLessons: number;
+  timeSpent: string;
+  difficulty?: 'Beginner' | 'Intermediate' | 'Advanced';
 };
 
-export default UnitPerformancePage;
+// Mock course data
+const mockCourses: Course[] = [
+  {
+    id: 'course-1',
+    title: 'Conversational English Fundamentals',
+    completion: 85,
+    averageScore: 92,
+    lessonsCompleted: 17,
+    totalLessons: 20,
+    timeSpent: '24h 30m',
+    difficulty: 'Beginner'
+  },
+  {
+    id: 'course-2',
+    title: 'Business Communication Skills',
+    completion: 60,
+    averageScore: 88,
+    lessonsCompleted: 12,
+    totalLessons: 20,
+    timeSpent: '18h 45m',
+    difficulty: 'Intermediate'
+  },
+  {
+    id: 'course-3',
+    title: 'Advanced Grammar and Composition',
+    completion: 40,
+    averageScore: 85,
+    lessonsCompleted: 8,
+    totalLessons: 20,
+    timeSpent: '12h 15m',
+    difficulty: 'Advanced'
+  }
+];
+
+// Pastel backgrounds for each difficulty level
+function getPastelBackground(difficulty?: string) {
+  switch (difficulty) {
+    case 'Beginner':
+      return 'bg-green-50';
+    case 'Intermediate':
+      return 'bg-blue-50';
+    case 'Advanced':
+      return 'bg-purple-50';
+    default:
+      return 'bg-gray-50';
+  }
+}
+
+export default function CoursePerformancePage() {
+  const router = useRouter();
+  const [hoveredCourse, setHoveredCourse] = useState<string | null>(null);
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Title + Subtitle */}
+        <div className="space-y-2 mb-6">
+          <h2 className="text-3xl font-bold text-gray-900">
+            Learning Path Performance
+          </h2>
+          <p className="text-lg text-gray-500 max-w-3xl">
+            Track your progress and performance across all your enrolled courses
+          </p>
+        </div>
+
+        {/* Course Cards */}
+        <div className="space-y-6">
+          {mockCourses.map((course) => (
+            <div
+              key={course.id}
+              onMouseEnter={() => setHoveredCourse(course.id)}
+              onMouseLeave={() => setHoveredCourse(null)}
+              className={`${getPastelBackground(course.difficulty)} 
+                relative rounded-lg p-6 shadow-md transition-shadow 
+                hover:shadow-lg`}
+            >
+              {/* Top row: Icon, Course title, Time */}
+              <div className="flex items-start justify-between mb-4">
+                {/* Icon + Title */}
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-white rounded-full shadow-sm">
+                    <BookOpen className="h-6 w-6 text-gray-500" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    {course.title}
+                  </h3>
+                </div>
+                {/* Time spent */}
+                <div className="flex items-center gap-1 text-sm text-gray-500">
+                  <Clock className="h-4 w-4" />
+                  <span>{course.timeSpent}</span>
+                </div>
+              </div>
+
+              {/* Middle row: Completion, Average Score, Lessons */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {/* Completion */}
+                <div className="bg-white rounded-md p-4 flex flex-col shadow-sm">
+                  <span className="text-sm text-gray-600 mb-1">
+                    Completion
+                  </span>
+                  <span className="text-sm font-medium text-gray-900">
+                    {course.completion}%
+                  </span>
+                  <div className="relative mt-2 h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                    <div
+                      className="absolute h-full bg-blue-500 transition-all duration-500 ease-out"
+                      style={{ width: `${course.completion}%` }}
+                    />
+                  </div>
+                </div>
+
+                {/* Average Score */}
+                <div className="bg-white rounded-md p-4 flex flex-col shadow-sm">
+                  <span className="text-sm text-gray-600 mb-1">
+                    Average Score
+                  </span>
+                  <div className="flex items-center gap-1">
+                    <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    <span className="text-sm font-medium text-gray-900">
+                      {course.averageScore}%
+                    </span>
+                  </div>
+                  <div className="relative mt-2 h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                    <div
+                      className="absolute h-full bg-gradient-to-r from-yellow-400 to-orange-400 transition-all duration-500 ease-out"
+                      style={{ width: `${course.averageScore}%` }}
+                    />
+                  </div>
+                </div>
+
+                {/* Lessons */}
+                <div className="bg-white rounded-md p-4 flex flex-col shadow-sm">
+                  <span className="text-sm text-gray-600 mb-1">
+                    Lessons
+                  </span>
+                  <span className="text-sm font-medium text-gray-900">
+                    {course.lessonsCompleted}/{course.totalLessons} completed
+                  </span>
+                  <div className="relative mt-2 h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                    <div
+                      className="absolute h-full bg-green-500 transition-all duration-500 ease-out"
+                      style={{
+                        width: `${
+                          (course.lessonsCompleted / course.totalLessons) * 100
+                        }%`
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom row: View details button */}
+              <div className="mt-4 flex justify-end">
+                <button
+                  onClick={() =>
+                    router.push('/performance/lesson-performance')
+                  }
+                  className="flex items-center gap-2 bg-white px-4 py-2 rounded-md text-gray-600 
+                    font-medium shadow-sm hover:bg-gray-50 transition-colors"
+                >
+                  View Details
+                  <ChevronRight
+                    className={`h-5 w-5 text-gray-400 transition-transform 
+                      duration-200 ${hoveredCourse === course.id ? 'translate-x-1' : ''}`}
+                  />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

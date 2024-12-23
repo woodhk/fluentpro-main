@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { Download } from 'lucide-react';
 import html2pdf from 'jspdf-html2canvas';
 
@@ -39,7 +40,6 @@ const ExecutiveSummary = () => {
         button.setAttribute('disabled', 'true');
       }
 
-      // Update margin to be an object with top/right/bottom/left
       const pdfOptions: PDFOptions = {
         margin: { top: 10, right: 10, bottom: 10, left: 10 },
         filename: 'FluentPro-Executive-Summary.pdf',
@@ -94,172 +94,154 @@ const ExecutiveSummary = () => {
       {/* Main Content */}
       <div id="executive-summary" className="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg">
         {/* Header */}
-        <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold text-blue-900 mb-4">FluentPro</h1>
-          <h2 className="text-2xl text-gray-600">Business English Training Solution</h2>
-          <p className="text-lg text-gray-500 mt-2">Prepared for HR Leadership</p>
+        <div className="mb-12 flex items-center">
+          <div className="mr-4">
+            <Image
+              src="/icons/logo.png"
+              alt="FluentPro Logo"
+              width={180}
+              height={45}
+              className="h-auto w-auto"
+              priority
+            />
+          </div>
+          <div>
+            <h2 className="text-2xl text-gray-600">Overcoming Traditional English Training Challenges</h2>
+            <p className="text-lg text-gray-500 mt-2">Executive Summary</p>
+          </div>
         </div>
 
-        {/* Overview */}
+        {/* Introduction */}
         <section className="mb-10">
           <h2 className="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-100 pb-2">
-            OVERVIEW
+            Introduction
           </h2>
           <p className="text-gray-700 leading-relaxed">
-            Let's talk about why traditional English training isn't working for your team. The problem? 
-            It's not teaching them the English they actually need for their roles. We discovered this 
-            30 years ago while training global leaders at HSBC, Hutchison, and Bank of China. That's 
-            why we created FluentPro - a completely different approach to Business English training.
+            FluentPro is a modern solution designed to address the key challenges faced by professionals 
+            learning English for work. Traditional training methods often fail to provide the specific 
+            skills employees need for their jobs. FluentPro uses AI to deliver personalized, practical, 
+            and cost-effective training, ensuring staff are better prepared for their roles.
           </p>
         </section>
 
-        {/* Core Value Proposition */}
+        {/* Key Challenges */}
         <section className="mb-10">
           <h2 className="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-100 pb-2">
-            WHAT MAKES US DIFFERENT
-          </h2>
-          <p className="text-gray-700 leading-relaxed">
-            Think about your team's daily challenges. They need English that works in real business 
-            situations, right now. That's exactly what FluentPro delivers. We've taken our decades 
-            of teaching experience and combined it with AI technology to create something special. 
-            Starting with our successful in-person courses, we evolved to our digital platform WETE, 
-            and in late 2022, we added AI capabilities. The result? A learning solution that adapts 
-            to each person's role and needs.
-          </p>
-        </section>
-
-        {/* Key Differentiators */}
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-100 pb-2">
-            KEY BENEFITS
+            Key Challenges in Traditional English Training
           </h2>
           
+          <div className="space-y-8">
+            {/* Challenge 1 */}
+            <div className="bg-blue-50 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-blue-700 mb-3">
+                Lack of Personalized Learning Paths
+              </h3>
+              <p className="text-gray-700 mb-4">
+                Traditional training often focuses on general content that does not align with employees' 
+                job responsibilities. This approach results in wasted time and disengaged learners. For 
+                example, professionals in finance need vocabulary related to reports and strategies, not 
+                casual phrases they will never use.
+              </p>
+              <div className="bg-white p-4 rounded-lg">
+                <h4 className="font-semibold text-blue-600 mb-2">Solution with FluentPro:</h4>
+                <p className="text-gray-700">
+                  FluentPro's AI-powered onboarding process creates a learning plan tailored to each 
+                  employee's role. By understanding their specific job requirements, FluentPro ensures 
+                  all lessons are directly relevant to their daily tasks.
+                </p>
+              </div>
+            </div>
+
+            {/* Challenge 2 */}
+            <div className="bg-blue-50 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-blue-700 mb-3">
+                Limitations of Online Training
+              </h3>
+              <p className="text-gray-700 mb-4">
+                Online courses are convenient but often lack two essential elements for success:
+                practice in real-world business scenarios and immediate, actionable feedback.
+              </p>
+              <div className="bg-white p-4 rounded-lg mb-4">
+                <h4 className="font-semibold text-blue-600 mb-2">Real World Example:</h4>
+                <p className="text-gray-700">
+                  Ana, a sales leader, completed an online course but struggled to communicate clearly 
+                  during a client meeting. Despite finishing all the modules, she was unable to 
+                  confidently apply what she had learned to her work.
+                </p>
+              </div>
+              <div className="bg-white p-4 rounded-lg">
+                <h4 className="font-semibold text-blue-600 mb-2">Solution with FluentPro:</h4>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Instant feedback to correct mistakes and improve responses</li>
+                  <li>• Practice tailored to specific work situations</li>
+                  <li>• A focus on building confidence and communication skills</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Challenge 3 */}
+            <div className="bg-blue-50 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-blue-700 mb-3">
+                Challenges with Classroom Training and Tutoring
+              </h3>
+              <p className="text-gray-700 mb-4">
+                Classroom training and private tutoring can provide effective feedback and speaking 
+                practice, but they come with significant challenges:
+              </p>
+              <ul className="space-y-2 text-gray-700 mb-4">
+                <li>• High costs for individual sessions</li>
+                <li>• Difficulties in scheduling for both teachers and staff</li>
+              </ul>
+              <div className="bg-white p-4 rounded-lg">
+                <h4 className="font-semibold text-blue-600 mb-2">Solution with FluentPro:</h4>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Flexible, self-paced learning for busy schedules</li>
+                  <li>• Personalized feedback similar to one-on-one tutoring</li>
+                  <li>• Practical, role-specific conversations at a more affordable cost</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* The FluentPro Advantage */}
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-100 pb-2">
+            The FluentPro Advantage
+          </h2>
+          <p className="text-gray-700 mb-4">
+            FluentPro addresses the weaknesses of traditional and online training by offering:
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-blue-50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-blue-700 mb-3">Practical Skills First</h3>
               <ul className="space-y-2 text-gray-700">
-                <li>• Focus on real business communication, not textbook English</li>
-                <li>• Learn to lead meetings, close deals, and work globally</li>
-                <li>• Content tailored to your industry - finance, hospitality, tech, and more</li>
+                <li>• <span className="font-semibold">Convenience:</span> Staff can train anytime, anywhere</li>
+                <li>• <span className="font-semibold">Customization:</span> Lessons are designed specifically for their job roles</li>
               </ul>
             </div>
-
             <div className="bg-blue-50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-blue-700 mb-3">Smart Technology</h3>
               <ul className="space-y-2 text-gray-700">
-                <li>• AI tutor that understands your role and adapts to your needs</li>
-                <li>• Practice in realistic business scenarios</li>
-                <li>• Easy to use on any device, anywhere, anytime</li>
+                <li>• <span className="font-semibold">Effectiveness:</span> Realistic practice with instant feedback</li>
+                <li>• <span className="font-semibold">Affordability:</span> A cost-effective solution that does not compromise on quality</li>
               </ul>
             </div>
           </div>
+          <p className="text-gray-700 mt-4">
+            FluentPro prepares employees for real-world communication in their roles, helping them 
+            perform better and achieve results that benefit the entire organization.
+          </p>
         </section>
 
-        {/* Benefits Sections */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-          <section>
-            <h2 className="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-100 pb-2">
-              FOR YOUR TEAM
-            </h2>
-            <ul className="space-y-2 text-gray-700">
-              <li>• Learn at their own pace, any time that works for them</li>
-              <li>• No more scheduling hassles or group training delays</li>
-              <li>• Everyone gets the same high-quality experience</li>
-              <li>• Progress at their own speed, focused on their needs</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-100 pb-2">
-              LEARNING EXPERIENCE
-            </h2>
-            <ul className="space-y-2 text-gray-700">
-              <li>• Practice without pressure - no client meetings at stake</li>
-              <li>• Get helpful feedback right when you need it</li>
-              <li>• Stay engaged with interactive, real-world scenarios</li>
-              <li>• Learn from anywhere - office, home, or on the go</li>
-            </ul>
-          </section>
-        </div>
-
-        {/* Implementation Advantages */}
+        {/* What's Next */}
         <section className="mb-10">
           <h2 className="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-100 pb-2">
-            EASY TO IMPLEMENT
-          </h2>
-          <div className="space-y-6">
-            <div>
-              <h3 className="font-semibold text-blue-700 mb-2">Grows With You</h3>
-              <ul className="space-y-2 text-gray-700">
-                <li>• Works for teams of any size - from 5 to 5,000</li>
-                <li>• Everyone gets the same great experience</li>
-                <li>• Train multiple departments at once</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-semibold text-blue-700 mb-2">Makes Life Easier</h3>
-              <ul className="space-y-2 text-gray-700">
-                <li>• Less work for your HR team</li>
-                <li>• No need to manage external trainers</li>
-                <li>• Fits around your team's schedule</li>
-                <li>• See exactly how everyone's improving</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* Strategic Alignment */}
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-100 pb-2">
-            WHY IT MATTERS
+            What's Next?
           </h2>
           <p className="text-gray-700 leading-relaxed">
-            In today's global business world, your team needs to communicate effectively across 
-            borders and cultures. FluentPro isn't just another training program - it's an 
-            investment in your team's success. We make it easy to give everyone the English 
-            skills they need, without disrupting your business.
+            In the next session, we'll demonstrate FluentPro's reporting and analytics tools, which 
+            allow HR managers to track progress and measure success.
           </p>
         </section>
-
-        {/* Future Development */}
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-100 pb-2">
-            WHAT'S NEXT
-          </h2>
-          <p className="text-gray-700 leading-relaxed">
-            We're always working on making FluentPro even better. New features and capabilities 
-            are on the way, and we'll show you all about them in our upcoming videos. We're 
-            excited to keep helping your team succeed in global business.
-          </p>
-        </section>
-
-        {/* Recommendation */}
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold text-blue-800 mb-4 border-b-2 border-blue-100 pb-2">
-            READY TO START?
-          </h2>
-          <p className="text-gray-700 leading-relaxed">
-            FluentPro is the smart choice for companies that want to improve their Business 
-            English capabilities without the usual headaches. It brings together everything 
-            we've learned about effective language training with modern technology that makes 
-            it work for everyone. Perfect for companies of any size, anywhere in the world.
-          </p>
-        </section>
-
-        {/* Footer */}
-        <footer className="mt-12 pt-6 border-t border-gray-200">
-          <p className="text-sm text-gray-500 italic">
-            Want to learn more? This is just the start. We'll show you all the details and 
-            implementation strategies in our next training videos. Your team's journey to 
-            better Business English begins here.
-          </p>
-          <div className="mt-4 text-center text-gray-400 text-sm">
-            Generated with FluentPro Executive Summary Generator
-            <div className="text-xs mt-1">
-              {new Date().toLocaleDateString()}
-            </div>
-          </div>
-        </footer>
       </div>
     </div>
   );
