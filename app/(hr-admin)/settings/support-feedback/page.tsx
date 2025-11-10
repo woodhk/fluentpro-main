@@ -85,7 +85,7 @@ export default function SupportFeedback() {
       <h1 className="text-2xl font-bold text-gray-900 mb-6">Account Settings</h1>
 
       {/* Tabs */}
-      <Tabs defaultValue="support" className="w-full">
+      <Tabs defaultValue="my-details" className="w-full">
         <TabsList className="w-full md:w-auto border-b bg-transparent mb-6">
           <Link href="/settings/my-details" className="flex-1 md:flex-none">
             <TabsTrigger 
@@ -101,6 +101,14 @@ export default function SupportFeedback() {
               className="data-[state=active]:bg-white data-[state=active]:border-b-2 data-[state=active]:border-blue-600 rounded-none px-6"
             >
               Password
+            </TabsTrigger>
+          </Link>
+          <Link href="/settings/certificate" className="flex-1 md:flex-none">
+            <TabsTrigger 
+              value="support" 
+              className="data-[state=active]:bg-white data-[state=active]:border-b-2 data-[state=active]:border-blue-600 rounded-none px-6"
+            >
+              Certificate
             </TabsTrigger>
           </Link>
           <Link href="/settings/support-feedback" className="flex-1 md:flex-none">

@@ -103,6 +103,14 @@ export default function AccountSettings() {
               Password
             </TabsTrigger>
           </Link>
+          <Link href="/settings/certificate" className="flex-1 md:flex-none">
+            <TabsTrigger 
+              value="support" 
+              className="data-[state=active]:bg-white data-[state=active]:border-b-2 data-[state=active]:border-blue-600 rounded-none px-6"
+            >
+              Certificate
+            </TabsTrigger>
+          </Link>
           <Link href="/settings/support-feedback" className="flex-1 md:flex-none">
             <TabsTrigger 
               value="support" 
